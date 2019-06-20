@@ -31,11 +31,30 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Tickets</a>
       </li>
-    </ul>
+</ul>
+<ul class="navbar-nav ml-auto">
+<li class="nav-item">
+
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
+</li>
+    
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="gestion_utilisateurs.php" role="button" aria-haspopup="true" aria-expanded="false">
+            Jerome Coffin
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Profile</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Log out</a>
+        </div>
+      </li>
+</ul>
+
   </div>
+
+
 </nav>
 <br>
