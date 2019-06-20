@@ -23,7 +23,7 @@
         <a class="nav-link" href="statistiques.php">Statistiques</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Projets</a>
+        <a class="nav-link" href="tables.html">Projets</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Clients</a>
