@@ -7,7 +7,6 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="bs431/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/index.css">
 
     <title>Home</title>
     
