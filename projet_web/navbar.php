@@ -16,7 +16,7 @@
         <div class="dropdown-menu">
           <a class="dropdown-item" href="gestion_utilisateurs.php">Ajouter</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="index.php">Modifier</a>
+          <a class="dropdown-item" href="gestion_utilisateurs.php">Modifier</a>
         </div>
       </li>
       <li class="nav-item">
@@ -38,3 +38,4 @@
     </form>
   </div>
 </nav>
+<br>

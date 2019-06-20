@@ -16,8 +16,55 @@
 
     <?php include('navbar.php'); ?>
 
-    <p>Gestion utilisateurs</p>
+    <div class="container-fluid">
 
+    <table class="table">
+  <thead class="bg-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+      <th scope="col">Modify</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  
+
+  <tbody>
+
+<?php include('connexion_bdd.php'); ?>
+
+<?php
+// On récupère tout le contenu de la table
+$reponse = $bdd->query('SELECT * FROM table_test');
+
+while ($donnees = $reponse->fetch())
+{
+    ?>
+
+<tr>
+      <th scope="row"><?php echo $donnees['id']; ?></th>
+      <td><?php echo $donnees['nom']; ?></td>
+      <td>toto</td>
+      <td>tata</td>
+      <td><button type="button" class="btn btn-primary">modify</button></td>
+      <td><button type="button" class="btn btn-danger">Delete</button></td>
+
+    </tr>
+
+
+    <?php
+}
+
+$reponse->closeCursor(); // Termine le traitement de la requête
+
+?>
+
+
+  </tbody>
+</table>
+</div>
     <?php include('footer.php'); ?>
 
     <!-- Optional JavaScript -->
