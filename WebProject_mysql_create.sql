@@ -1,103 +1,110 @@
 CREATE TABLE `ticket` (
-	`numero` int NOT NULL AUTO_INCREMENT,
-	`titre` varchar(255) NOT NULL,
-	`date` TIMESTAMP(255) NOT NULL,
-	`description` varchar(1000) NOT NULL,
-	`statut_actuel_id` int NOT NULL,
-	`author_id` int NOT NULL,
-	`projet_id` int NOT NULL,
+	`numero` INT NOT NULL,
+	`titre` VARCHAR(100) NOT NULL,
+	`date` TIMESTAMP NOT NULL,
+	`description` VARCHAR(1000) NOT NULL,
+	`statut_actuel_id` INT NOT NULL,
+	`author_id` INT NOT NULL,
+	`projet_id` INT NOT NULL,
 	PRIMARY KEY (`numero`)
 );
 
 CREATE TABLE `statut` (
-	`id` int NOT NULL AUTO_INCREMENT,
-	`libelle` varchar(100) NOT NULL,
+	`id` INT NOT NULL,
+	`libelle` VARCHAR(100) NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
 CREATE TABLE `utilisateur` (
-	`id` int NOT NULL AUTO_INCREMENT,
-	`nom` varchar(100) NOT NULL,
-	`prenom` varchar(100) NOT NULL,
-	`client` int NOT NULL,
+	`id` INT NOT NULL,
+	`nom` VARCHAR(100) NOT NULL,
+	`prenom` VARCHAR(100) NOT NULL,
+	`client` INT NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
 CREATE TABLE `niveau_bug` (
-	`id` int NOT NULL,
-	`ordre` int NOT NULL,
-	`libelle` varchar(100) NOT NULL,
+	`id` INT NOT NULL,
+	`ordre` INT NOT NULL,
+	`libelle` VARCHAR(100) NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
 CREATE TABLE `projet` (
-	`id` int NOT NULL AUTO_INCREMENT,
-	`nom` varchar(100) NOT NULL,
+	`id` INT NOT NULL,
+	`nom` VARCHAR(100) NOT NULL,
 	`date_creation` TIMESTAMP NOT NULL,
 	`cloture` BOOLEAN NOT NULL,
-	`responsable_id` int NOT NULL,
+	`responsable_id` INT NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
 CREATE TABLE `historique_statut` (
-	`ticket_numero` int NOT NULL,
-	`statut_id` int NOT NULL,
+	`ticket_numero` INT NOT NULL,
+	`statut_id` INT NOT NULL,
 	`date` TIMESTAMP NOT NULL,
 	PRIMARY KEY (`ticket_numero`,`statut_id`)
 );
 
 CREATE TABLE `commentaire` (
-	`id` int NOT NULL AUTO_INCREMENT,
-	`description` varchar(1000) NOT NULL,
-	`utilisateur_id` int(1000) NOT NULL,
-	`ticket_numero` int NOT NULL,
+	`id` INT NOT NULL,
+	`description` VARCHAR(1000) NOT NULL,
+	`utilisateur_id` INT NOT NULL,
+	`ticket_numero` INT NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
 CREATE TABLE `version` (
-	`projet_id` int NOT NULL,
-	`numero` int NOT NULL AUTO_INCREMENT,
+	`projet_id` INT NOT NULL,
+	`numero` INT NOT NULL,
 	PRIMARY KEY (`projet_id`,`numero`)
 );
 
 CREATE TABLE `ticket_associe` (
-	`ticket_numero` int NOT NULL,
-	`niveau_bug_id` int NOT NULL,
+	`ticket_numero` INT NOT NULL,
+	`niveau_bug_id` INT NOT NULL,
 	PRIMARY KEY (`ticket_numero`)
 );
 
 CREATE TABLE `bug` (
-	`ticket_numero` int NOT NULL,
-	`niveau_bug_id` int NOT NULL,
+	`ticket_numero` INT NOT NULL,
+	`niveau_bug_id` INT NOT NULL,
 	PRIMARY KEY (`ticket_numero`)
 );
 
 CREATE TABLE `evolution` (
-	`ticket_numero` int NOT NULL,
-	`priorite` int NOT NULL,
+	`ticket_numero` INT NOT NULL,
+	`priorite` INT NOT NULL,
 	PRIMARY KEY (`ticket_numero`)
 );
 
 CREATE TABLE `bug_version_affectee` (
-	`bug_ticket_numero` int NOT NULL,
-	`version_affectee_projet_id` int NOT NULL,
-	`version_affectee_numero` int NOT NULL,
+	`bug_ticket_numero` INT NOT NULL,
+	`version_affectee_projet_id` INT NOT NULL,
+	`version_affectee_numero` INT NOT NULL,
 	PRIMARY KEY (`bug_ticket_numero`,`version_affectee_projet_id`,`version_affectee_numero`)
 );
 
 CREATE TABLE `client` (
-	`id` int NOT NULL AUTO_INCREMENT,
-	`nom` varchar(100) NOT NULL,
-	`prenom` varchar(100) NOT NULL,
-	`mail` varchar(100) NOT NULL,
-	`telephone` varchar(100) NOT NULL,
-	`entreprise_id` varchar(100) NOT NULL,
+	`id` INT NOT NULL,
+	`nom` VARCHAR(100) NOT NULL,
+	`prenom` VARCHAR(100) NOT NULL,
+	`mail` VARCHAR(100) NOT NULL,
+	`telephone` VARCHAR(100) NOT NULL,
+	`entreprise_id` INT NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
+CREATE TABLE `message`(
+	`client_id` INT NOT NULL,
+	`date`TIMESTAMP NOT NULL,
+	`objet` VARCHAR(1000),
+	PRIMARY KEY (`client_id`)
+);
+
 CREATE TABLE `entreprise` (
-	`id` int NOT NULL AUTO_INCREMENT,
-	`nom` varchar(100) NOT NULL,
+	`id` INT NOT NULL,
+	`nom` VARCHAR(100) NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
@@ -139,3 +146,4 @@ ALTER TABLE `bug_version_affectee` ADD CONSTRAINT `bug_version_affectee_fk2` FOR
 
 ALTER TABLE `client` ADD CONSTRAINT `client_fk0` FOREIGN KEY (`entreprise_id`) REFERENCES `entreprise`(`id`);
 
+ALTER TABLE `message` ADD CONSTRAINT `message_fk0` FOREIGN KEY (`client_id`) REFERENCES `client`(`id`);
