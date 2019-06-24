@@ -140,9 +140,7 @@ ALTER TABLE `evolution` ADD CONSTRAINT `evolution_fk0` FOREIGN KEY (`ticket_nume
 
 ALTER TABLE `bug_version_affectee` ADD CONSTRAINT `bug_version_affectee_fk0` FOREIGN KEY (`bug_ticket_numero`) REFERENCES `bug`(`ticket_numero`);
 
-ALTER TABLE `bug_version_affectee` ADD CONSTRAINT `bug_version_affectee_fk1` FOREIGN KEY (`version_affectee_projet_id`) REFERENCES `version`(`projet_id`);
-
-ALTER TABLE `bug_version_affectee` ADD CONSTRAINT `bug_version_affectee_fk2` FOREIGN KEY (`version_affectee_numero`) REFERENCES `version`(`numero`);
+ALTER TABLE `bug_version_affectee` ADD CONSTRAINT `bug_version_affectee_fk1` FOREIGN KEY (`version_affectee_projet_id`,`version_affectee_numero`) REFERENCES `version`(`projet_id`,`numero`);
 
 ALTER TABLE `client` ADD CONSTRAINT `client_fk0` FOREIGN KEY (`entreprise_id`) REFERENCES `entreprise`(`id`);
 
