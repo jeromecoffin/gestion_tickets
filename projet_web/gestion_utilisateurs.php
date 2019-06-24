@@ -1,78 +1,80 @@
 <!doctype html>
 <html lang="en">
+
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="bs431/css/bootstrap.min.css">
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
-
     <title>Gestion utilisateurs</title>
-
   </head>
 
   <body>
 
+    <!-- include navigation bar -->
     <?php include('navbar.php'); ?>
 
+    <!-- include modal to add user -->
+    <?php include('modal_utilisateur.php'); ?>
+
+    <!-- Body content -->
     <div class="container-fluid">
-
-    <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col text-left">
+                <h6 class="m-0 font-weight-bold text-primary">User management</h6>
+              </div>
+              <div class="col text-right">    
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                  Ajouter
+                </button>
+              </div>
             </div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Start date</th>
-                      <th>Salary</th>
-                    </tr>
-                  </thead>
-  
-
-  <tbody>
-
-<?php include('connexion_bdd.php'); ?>
-
-<?php
-// On récupère tout le contenu de la table
-$reponse = $bdd->query('SELECT * FROM table_test');
-
-while ($donnees = $reponse->fetch())
-{
-    ?>
-
-<tr>
-      <th scope="row"><?php echo $donnees['id']; ?></th>
-      <td><?php echo $donnees['nom']; ?></td>
-      <td>toto</td>
-      <td>tata</td>
-      <td><button type="button" class="btn btn-primary">modify</button></td>
-      <td><button type="button" class="btn btn-danger">Delete</button></td>
-
-    </tr>
-
-
-    <?php
-}
-
-$reponse->closeCursor(); // Termine le traitement de la requête
-
-?>
-
-
-  </tbody>
-</table>
-</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Position</th>
+                  <th>Office</th>
+                  <th>Age</th>
+                  <th>Start date</th>
+                  <th>Salary</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php include('connexion_bdd.php'); ?>
+                <?php
+                  // On récupère tout le contenu de la table
+                $reponse = $bdd->query('SELECT * FROM table_test');
+                while ($donnees = $reponse->fetch()){
+                ?>
+                <tr>
+                  <th scope="row"><?php echo $donnees['id']; ?></th>
+                  <td><?php echo $donnees['nom']; ?></td>
+                  <td>toto</td>
+                  <td>tata</td>
+                  <td><button type="button" class="btn btn-primary">modify</button></td>
+                  <td><button type="button" class="btn btn-danger">Delete</button></td>
+                </tr>
+                <?php
+                }     
+                $reponse->closeCursor(); // Termine le traitement de la requête
+                ?>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>  
     <?php include('footer.php'); ?>
     
 
@@ -84,10 +86,10 @@ $reponse->closeCursor(); // Termine le traitement de la requête
     
     <!-- Page level plugins -->
     <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-  <!-- Page level custom scripts -->
-  <script src="js/demo/datatables-demo.js"></script>
+    <!-- Page level custom scripts -->
+    <script src="js/demo/datatables-demo.js"></script>
   
   </body>
 </html>

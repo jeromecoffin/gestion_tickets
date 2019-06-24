@@ -9,18 +9,8 @@
       <li class="nav-item active">
         <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="gestion_utilisateurs.php" role="button" aria-haspopup="true" aria-expanded="false">
-            Utilisateurs
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="gestion_utilisateurs.php">Ajouter</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="gestion_utilisateurs.php">Modifier</a>
-        </div>
-      </li>
       <li class="nav-item">
-        <a class="nav-link" href="statistiques.php">Statistiques</a>
+        <a class="nav-link" href="gestion_utilisateurs.php">Utilisateurs</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="tables.html">Projets</a>
@@ -31,30 +21,27 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Tickets</a>
       </li>
-</ul>
-<ul class="navbar-nav ml-auto">
-<li class="nav-item">
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
 
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-</li>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </li>
     
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="gestion_utilisateurs.php" role="button" aria-haspopup="true" aria-expanded="false">
-            Jerome Coffin
+          Jerome Coffin
         </a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="#">Profile</a>
-          <div class="dropdown-divider"></div>
+            <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Log out</a>
         </div>
       </li>
-</ul>
-
+    </ul>
   </div>
-
-
 </nav>
 <br>
