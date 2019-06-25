@@ -13,13 +13,13 @@
         <a class="nav-link" href="gestion_utilisateurs.php">Utilisateurs</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="tables.html">Projets</a>
+        <a class="nav-link" href="gestion_utilisateurs.php">Projets</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Clients</a>
+        <a class="nav-link" href="gestion_utilisateurs.php">Clients</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Tickets</a>
+        <a class="nav-link" href="gestion_utilisateurs.php">Tickets</a>
       </li>
     </ul>
     <ul class="navbar-nav ml-auto">

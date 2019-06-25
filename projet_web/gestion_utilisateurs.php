@@ -42,26 +42,28 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Age</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
+                  <th>ID</th>
+                  <th>Nom</th>
+                  <th>Prenom</th>
+                  <th>Login</th>
+                  <th>email</th>
+                  <th>Modify</th>
+                  <th>Delete</th>
                 </tr>
               </thead>
               <tbody>
                 <?php include('connexion_bdd.php'); ?>
                 <?php
                   // On récupère tout le contenu de la table
-                $reponse = $bdd->query('SELECT * FROM table_test');
+                $reponse = $bdd->query('SELECT * FROM UTILISATEURS');
                 while ($donnees = $reponse->fetch()){
                 ?>
                 <tr>
-                  <th scope="row"><?php echo $donnees['id']; ?></th>
-                  <td><?php echo $donnees['nom']; ?></td>
-                  <td>toto</td>
-                  <td>tata</td>
+                  <th scope="row"><?php echo $donnees['ID_USER']; ?></th>
+                  <td><?php echo $donnees['NOM_USER']; ?></td>
+                  <td><?php echo $donnees['PRENOM_USER']; ?></td>
+                  <td><?php echo $donnees['LOGIN']; ?></td>
+                  <td><?php echo $donnees['EMAIL']; ?></td>
                   <td><button type="button" class="btn btn-primary">modify</button></td>
                   <td><button type="button" class="btn btn-danger">Delete</button></td>
                 </tr>
