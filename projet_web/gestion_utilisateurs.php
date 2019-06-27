@@ -17,7 +17,7 @@
     <?php include('navbar.php'); ?>
 
     <!-- include modal to add user -->
-    <?php include('modal_utilisateur.php'); ?>
+    <?php include('modal_utilisateurs.php'); ?>
 
     <!-- Body content -->
     <div class="container-fluid">
@@ -52,12 +52,14 @@
                 </tr>
               </thead>
               <tbody>
+
                 <?php include('connexion_bdd.php'); ?>
                 <?php
                   // On récupère tout le contenu de la table
                 $reponse = $bdd->query('SELECT * FROM UTILISATEURS');
                 while ($donnees = $reponse->fetch()){
                 ?>
+
                 <tr>
                   <th scope="row"><?php echo $donnees['ID_USER']; ?></th>
                   <td><?php echo $donnees['NOM_USER']; ?></td>
@@ -65,12 +67,19 @@
                   <td><?php echo $donnees['LOGIN']; ?></td>
                   <td><?php echo $donnees['EMAIL']; ?></td>
                   <td><button type="button" class="btn btn-primary">modify</button></td>
-                  <td><button type="button" class="btn btn-danger">Delete</button></td>
+                  <td>
+                    <form action ="delete_utilisateurs.php" method="get">
+                      <input type="hidden" name="row_id" value="<?php echo $donnees['ID_USER']; ?>">
+                      <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                  </td>
                 </tr>
+
                 <?php
                 }     
                 $reponse->closeCursor(); // Termine le traitement de la requête
                 ?>
+
               </tbody>
             </table>
           </div>
