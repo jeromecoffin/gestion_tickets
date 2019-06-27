@@ -13,7 +13,7 @@
         <a class="nav-link" href="gestion_utilisateurs.php">Utilisateurs</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="gestion_utilisateurs.php">Projets</a>
+        <a class="nav-link" href="gestion_projets.php">Projets</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="gestion_utilisateurs.php">Clients</a>

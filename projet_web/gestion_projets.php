@@ -16,10 +16,6 @@
     <!-- include navigation bar -->
     <?php include('navbar.php'); ?>
 
-    <!-- include modals -->
-    <?php include('modal_ajouter_utilisateurs.html'); ?>
-
-
 
     
 
@@ -30,11 +26,11 @@
           <div class="container-fluid">
             <div class="row">
               <div class="col text-left">
-                <h6 class="m-0 font-weight-bold text-primary">User management</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Project management</h6>
               </div>
               <div class="col text-right">    
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target='#modalAjouter'>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#">
                   Ajouter
                 </button>
               </div>
@@ -48,10 +44,11 @@
                 <tr>
                   <th>ID</th>
                   <th>Nom</th>
-                  <th>Prenom</th>
-                  <th>Login</th>
-                  <th>email</th>
-                  <th>Modify</th>
+                  <th>Creation</th>
+                  <th>Cloture</th>
+                  <th>Description</th>
+                  <th>Client</th>
+                  <th>Modifier</th>
                   <th>Delete</th>
                 </tr>
               </thead>
@@ -60,27 +57,26 @@
                 <?php include('connexion_bdd.php'); ?>
                 <?php
                   // On récupère tout le contenu de la table
-                $reponse = $bdd->query('SELECT * FROM UTILISATEURS');
+                $reponse = $bdd->query('SELECT * FROM PROJET');
                 while ($donnees = $reponse->fetch()){
                 ?>
 
                 <tr>
-                  <th scope="row"><?php echo $donnees['ID_USER']; ?></th>
-                  <td><?php echo $donnees['NOM_USER']; ?></td>
-                  <td><?php echo $donnees['PRENOM_USER']; ?></td>
-                  <td><?php echo $donnees['LOGIN_USER']; ?></td>
-                  <td><?php echo $donnees['EMAIL_USER']; ?></td>
+                  <th scope="row"><?php echo $donnees['ID_PROJET']; ?></th>
+                  <td><?php echo $donnees['NOM_PROJET']; ?></td>
+                  <td><?php echo $donnees['DATE_CREATION']; ?></td>
+                  <td><?php echo $donnees['CLOTURE']; ?></td>
+                  <td><?php echo $donnees['DESCRIPTION']; ?></td>
+                  <td><?php echo $donnees['ID_CLIENT']; ?></td>
                   <td>
-                  <?php include('modal_modifier_utilisateurs.php'); ?>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifierModal">
+                    <button type="button" class="btn btn-primary" data-toggle="modal">
                     Modifier
                     </button>
                   </td>
                   <td>
-                    <form action ="delete_utilisateurs.php" method="get">
-                      <input type="hidden" name="row_id" value="<?php echo $donnees['ID_USER']; ?>">
-                      <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
+                  <button type="button" class="btn btn-primary" data-toggle="modal">
+                    Delete
+                    </button>
                   </td>
                 </tr>
 

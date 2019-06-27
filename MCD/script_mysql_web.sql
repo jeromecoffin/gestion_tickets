@@ -24,9 +24,9 @@ CREATE TABLE UTILISATEURS(
   ID_USER     Int  Auto_increment  NOT NULL ,
   NOM_USER    Varchar (50) NOT NULL ,
   PRENOM_USER Varchar (50) NOT NULL ,
-  LOGIN       Varchar (50) NOT NULL ,
-  PASSWORD    Varchar (50) NOT NULL ,
-  EMAIL       Varchar (50) NOT NULL ,
+  LOGIN_USER       Varchar (50) NOT NULL ,
+  PASSWORD_USER    Varchar (50) NOT NULL ,
+  EMAIL_USER       Varchar (50) NOT NULL ,
   CONSTRAINT UTILISATEURS_PK PRIMARY KEY (ID_USER)
 )ENGINE=InnoDB;
 

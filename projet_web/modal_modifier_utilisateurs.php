@@ -1,7 +1,8 @@
-<!-- Fenetre pop-up pour l'ajout d'un individu-->
+<!-- Fenetre pop-up pour modifier d'un individu-->
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+<div class="modal fade" id="modifierModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -14,18 +15,18 @@
         <form class="user" action ="ajouter_modal_utilisateurs.php" method="get">
           <div class="form-group row">
             <div class="col-sm-6 mb-3 mb-sm-0">
-              <input type="text" class="form-control form-control-user" name="nom_modal" placeholder="Nom">
+              <input type="text" class="form-control form-control-user" name="nom_modal" placeholder="<?php echo $donnees['NOM_USER']; ?>">
             </div>
             <div class="col-sm-6">
-              <input type="text" class="form-control form-control-user" name="prenom_modal" placeholder="Prenom">
+              <input type="text" class="form-control form-control-user" name="prenom_modal" placeholder="<?php echo $donnees['PRENOM_USER']; ?>">
             </div>
           </div>
           <div class="form-group">
-            <input type="email" class="form-control form-control-user" name="email_modal" placeholder="Adresse mail">
+            <input type="email" class="form-control form-control-user" name="email_modal" placeholder="<?php echo $donnees['EMAIL_USER']; ?>">
           </div>
           <div class="form-group row">
               <div class="col-sm-6 mb-3 mb-sm-0">
-                <input type="text" class="form-control form-control-user" name="login_modal" placeholder="Login">
+                <input type="text" class="form-control form-control-user" name="login_modal" placeholder="<?php echo $donnees['LOGIN_USER']; ?>">
               </div>
               <div class="col-sm-6">
                 <input type="password" class="form-control form-control-user" name="mdp_modal" placeholder="Mot de passe">
