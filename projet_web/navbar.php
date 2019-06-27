@@ -16,10 +16,10 @@
         <a class="nav-link" href="gestion_projets.php">Projets</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="gestion_utilisateurs.php">Clients</a>
+        <a class="nav-link" href="gestion_clients.php">Clients</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="gestion_utilisateurs.php">Tickets</a>
+        <a class="nav-link" href="gestion_tickets.php">Tickets</a>
       </li>
     </ul>
     <ul class="navbar-nav ml-auto">
@@ -32,7 +32,7 @@
       </li>
     
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="gestion_utilisateurs.php" role="button" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
           Jerome Coffin
         </a>
         <div class="dropdown-menu">

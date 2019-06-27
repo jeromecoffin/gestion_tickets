@@ -8,17 +8,13 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="bs431/css/bootstrap.min.css">
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <title>Gestion utilisateurs</title>
+    <title>Gestion Clients</title>
   </head>
 
   <body>
 
     <!-- include navigation bar -->
     <?php include('navbar.php'); ?>
-
-    <!-- include modals -->
-    <?php include('modal_ajouter_utilisateurs.html'); ?>
-
 
 
     
@@ -30,11 +26,11 @@
           <div class="container-fluid">
             <div class="row">
               <div class="col text-left">
-                <h6 class="m-0 font-weight-bold text-primary">User management</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Customer management</h6>
               </div>
               <div class="col text-right">    
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target='#modalAjouter'>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#">
                   Ajouter
                 </button>
               </div>
@@ -48,10 +44,10 @@
                 <tr>
                   <th>ID</th>
                   <th>Nom</th>
-                  <th>Prenom</th>
-                  <th>Login</th>
-                  <th>email</th>
-                  <th>Modify</th>
+                  <th>Mail</th>
+                  <th>Numero</th>
+                  <th>Ticket</th>
+                  <th>Modifier</th>
                   <th>Delete</th>
                 </tr>
               </thead>
@@ -60,27 +56,25 @@
                 <?php include('connexion_bdd.php'); ?>
                 <?php
                   // On récupère tout le contenu de la table
-                $reponse = $bdd->query('SELECT * FROM UTILISATEURS');
+                $reponse = $bdd->query('SELECT * FROM CLIENT');
                 while ($donnees = $reponse->fetch()){
                 ?>
 
                 <tr>
-                  <th scope="row"><?php echo $donnees['ID_USER']; ?></th>
-                  <td><?php echo $donnees['NOM_USER']; ?></td>
-                  <td><?php echo $donnees['PRENOM_USER']; ?></td>
-                  <td><?php echo $donnees['LOGIN_USER']; ?></td>
-                  <td><?php echo $donnees['EMAIL_USER']; ?></td>
+                  <th scope="row"><?php echo $donnees['ID_CLIENT']; ?></th>
+                  <td><?php echo $donnees['NOM_CLIENT']; ?></td>
+                  <td><?php echo $donnees['MAIL_CLIENT']; ?></td>
+                  <td><?php echo $donnees['NUMERO_CLIENT']; ?></td>
+                  <td><?php echo $donnees['ID_TICKET']; ?></td>
                   <td>
-                  <?php include('modal_modifier_utilisateurs.php'); ?>
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modifierModal">
+                    <button type="button" class="btn btn-primary" data-toggle="modal">
                     Modifier
                     </button>
                   </td>
                   <td>
-                    <form action ="delete_utilisateurs.php" method="get">
-                      <input type="hidden" name="row_id" value="<?php echo $donnees['ID_USER']; ?>">
-                      <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
+                  <button type="button" class="btn btn-primary" data-toggle="modal">
+                    Delete
+                    </button>
                   </td>
                 </tr>
 
