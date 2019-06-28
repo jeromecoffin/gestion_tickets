@@ -35,7 +35,15 @@
               <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                   <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Ongoing Tickets</div>
-                  <div class="h5 mb-0 font-weight-bold text-gray-800">40,000</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">
+                    <?php
+                      include('connexion_bdd.php');
+                      $response = $bdd->prepare("SELECT * FROM PROJET WHERE `CLOTURE`= 0;");
+                      $response->execute();
+                      $count = $response->rowcount();
+                      echo $count;
+                    ?>
+                  </div>
                 </div>
                 <div class="col-auto">
                   <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -52,7 +60,14 @@
               <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                   <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Solved Tickets</div>
-                  <div class="h5 mb-0 font-weight-bold text-gray-800">215,000</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">
+                    <?php
+                      $response = $bdd->prepare("SELECT * FROM PROJET WHERE `CLOTURE`= 1;");
+                      $response->execute();
+                      $count = $response->rowcount();
+                      echo $count;
+                    ?>
+                  </div>
                 </div>
                 <div class="col-auto">
                   <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -120,8 +135,7 @@
                 <canvas id="myAreaChart"></canvas>
               </div>
               <hr>
-              Insérer du texte
-              <!--Styling for the area chart can be found in the <code>/js/demo/chart-area-demo.js</code> file.-->
+              Styling for the area chart can be found in the <code>/js/demo/chart-area-demo.js</code> file.
             </div>
           </div>
           <!-- Bar Chart -->
