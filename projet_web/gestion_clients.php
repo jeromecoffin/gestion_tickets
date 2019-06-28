@@ -16,7 +16,11 @@
     <!-- include navigation bar -->
     <?php include('navbar.php'); ?>
 
-
+    <!-- include modal -->
+    <?php 
+      include('modal_ajouter_clients.html');
+      include('connexion_bdd.php');
+    ?>
     
 
     <!-- Body content -->
@@ -30,7 +34,7 @@
               </div>
               <div class="col text-right">    
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAjouterClients">
                   Ajouter
                 </button>
               </div>
@@ -53,7 +57,7 @@
               </thead>
               <tbody>
 
-                <?php include('connexion_bdd.php'); ?>
+                
                 <?php
                   // On récupère tout le contenu de la table
                 $reponse = $bdd->query('SELECT * FROM CLIENT');
@@ -67,12 +71,12 @@
                   <td><?php echo $donnees['NUMERO_CLIENT']; ?></td>
                   <td><?php echo $donnees['ID_TICKET']; ?></td>
                   <td>
-                    <button type="button" class="btn btn-primary" data-toggle="modal">
+                    <button type="button" class="btn btn-success" data-toggle="modal">
                     Modifier
                     </button>
                   </td>
                   <td>
-                  <button type="button" class="btn btn-primary" data-toggle="modal">
+                  <button type="button" class="btn btn-danger" data-toggle="modal">
                     Delete
                     </button>
                   </td>

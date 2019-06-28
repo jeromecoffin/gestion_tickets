@@ -16,8 +16,8 @@
     <!-- include navigation bar -->
     <?php include('navbar.php'); ?>
 
-
-    
+    <!-- include modal -->    
+    <?php include('modal_ajouter_projets.html'); ?>
 
     <!-- Body content -->
     <div class="container-fluid">
@@ -30,7 +30,7 @@
               </div>
               <div class="col text-right">    
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAjouterProjets">
                   Ajouter
                 </button>
               </div>
@@ -66,15 +66,15 @@
                   <td><?php echo $donnees['NOM_PROJET']; ?></td>
                   <td><?php echo $donnees['DATE_CREATION']; ?></td>
                   <td><?php echo $donnees['CLOTURE']; ?></td>
-                  <td><?php echo $donnees['DESCRIPTION']; ?></td>
+                  <td><?php echo $donnees['DESCRIPTION_PROJET']; ?></td>
                   <td><?php echo $donnees['ID_CLIENT']; ?></td>
                   <td>
-                    <button type="button" class="btn btn-primary" data-toggle="modal">
+                    <button type="button" class="btn btn-success" data-toggle="modal">
                     Modifier
                     </button>
                   </td>
                   <td>
-                  <button type="button" class="btn btn-primary" data-toggle="modal">
+                  <button type="button" class="btn btn-danger" data-toggle="modal">
                     Delete
                     </button>
                   </td>
