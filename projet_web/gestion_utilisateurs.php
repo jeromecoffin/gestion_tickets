@@ -18,7 +18,7 @@
 
     <!-- include modals -->
     <?php include('modal_ajouter_utilisateurs.html'); ?>
-
+    <?php include('modal_modifier_utilisateurs.php'); ?>
 
 
     
@@ -71,10 +71,10 @@
                   <td><?php echo $donnees['LOGIN_USER']; ?></td>
                   <td><?php echo $donnees['EMAIL_USER']; ?></td>
                   <td>
-                  <?php include('modal_modifier_utilisateurs.php'); ?>
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modifierModal">
-                    Modifier
-                    </button>
+                    <form action ="modifier_utilisateurs.php" method="get">
+                      <input type="hidden" name="row_id" value="<?php echo $donnees['ID_USER']; ?>">
+                      <button type="submit" class="btn btn-success">Modifier</button>
+                    </form>
                   </td>
                   <td>
                     <form action ="delete_utilisateurs.php" method="get">
