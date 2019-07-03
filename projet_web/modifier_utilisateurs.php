@@ -30,6 +30,10 @@
   <div class="container-fluid">
     <form action ="bdd_modifier_utilisateurs.php" method="get">
       <div class="form-row">
+        <input type="text" class="form-control" id="validationDefault00" name="id_modifier" placeholder="ID" value="<?php echo $user['ID_USER'] ?>" required>
+
+      </div>
+      <div class="form-row">
         <div class="col-md-4 mb-3">
           <label for="validationDefault01">First name</label>
           <input type="text" class="form-control" id="validationDefault01" name="prenom_modifier" placeholder="Prenom" value="<?php echo $user['PRENOM_USER'] ?>" required>

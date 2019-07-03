@@ -17,7 +17,7 @@
     <?php include('navbar.php'); ?>
 
     <!-- include modals -->
-    <?php include('modal_ajouter_utilisateurs.html'); ?>
+    <?php include('add_modal/modal_ajouter_utilisateurs.html'); ?>
     <?php include('modal_modifier_utilisateurs.php'); ?>
 
 

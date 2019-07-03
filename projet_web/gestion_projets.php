@@ -17,7 +17,7 @@
     <?php include('navbar.php'); ?>
 
     <!-- include modal -->    
-    <?php include('modal_ajouter_projets.html'); ?>
+    <?php include('add_modal/modal_ajouter_projets.html'); ?>
 
     <!-- Body content -->
     <div class="container-fluid">
@@ -69,9 +69,10 @@
                   <td><?php echo $donnees['DESCRIPTION_PROJET']; ?></td>
                   <td><?php echo $donnees['ID_CLIENT']; ?></td>
                   <td>
-                    <button type="button" class="btn btn-success" data-toggle="modal">
-                    Modifier
-                    </button>
+                  <form action ="modifier_projets.php" method="get">
+                      <input type="hidden" name="row_id" value="<?php echo $donnees['ID_PROJET']; ?>">
+                      <button type="submit" class="btn btn-success">Modifier</button>
+                    </form>
                   </td>
                   <td>
                   <button type="button" class="btn btn-danger" data-toggle="modal">

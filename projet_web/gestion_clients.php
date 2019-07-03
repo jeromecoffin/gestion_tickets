@@ -18,7 +18,7 @@
 
     <!-- include modal -->
     <?php 
-      include('modal_ajouter_clients.html');
+      include('add_modal/modal_ajouter_clients.html');
       include('connexion_bdd.php');
     ?>
     
@@ -71,9 +71,10 @@
                   <td><?php echo $donnees['NUMERO_CLIENT']; ?></td>
                   <td><?php echo $donnees['ID_TICKET']; ?></td>
                   <td>
-                    <button type="button" class="btn btn-success" data-toggle="modal">
-                    Modifier
-                    </button>
+                  <form action ="modifier_clients.php" method="get">
+                      <input type="hidden" name="row_id" value="<?php echo $donnees['ID_CLIENT']; ?>">
+                      <button type="submit" class="btn btn-success">Modifier</button>
+                    </form>
                   </td>
                   <td>
                   <button type="button" class="btn btn-danger" data-toggle="modal">

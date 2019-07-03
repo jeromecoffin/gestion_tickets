@@ -1,34 +1,28 @@
-<!-- Fenetre pop-up pour l'ajout d'un projet-->
+<!-- Fenetre pop-up pour l'ajout d'un client-->
 
 <!-- Modal -->
-<div class="modal fade" id="modalAjouterProjets" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="modalAjouterTickets" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Ajouter un Projet</h5>
+          <h5 class="modal-title" id="exampleModalLongTitle">Ajouter un client</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <form class="user" action ="ajouter_modal_projets.php" method="get">
+          <form class="user" action ="modal/ajouter_modal_tickets.php" method="get">
             <div class="form-group row">
               <div class="col-sm-6 mb-3 mb-sm-0">
-                <input type="text" class="form-control form-control-user" name="nom_modal" placeholder="Nom">
+                <input type="text" class="form-control form-control-user" name="titre_modal" placeholder="Titre">
               </div>
               <div class="col-sm-6">
-                <input type="text" class="form-control form-control-user" name="client_modal" placeholder="Numero Client">
-              </div>
-              <div class="col-sm-6">
-                <input type="text" class="form-control form-control-user" name="cloture_modal" placeholder="Cloture">
+                <input type="date" class="form-control form-control-user" name="date_modal" placeholder="Date Creation">
               </div>
             </div>
             <div class="form-group">
               <input type="text" class="form-control form-control-user" name="description_modal" placeholder="Description">
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control form-control-user" name="date_creation_modal" placeholder="Date Creation">
-            </div>                 
+            </div>               
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
               <button type="submit" class="btn btn-primary">Ajouter</button>

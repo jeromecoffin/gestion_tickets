@@ -5,13 +5,17 @@
   $login = $_GET['login_modifier'];
   $mdp = $_GET['mot_de_passe_modifier'];
   $email = $_GET['email_modifier'];
-  $bdd->exec("UPDATE UTILISATEURS SET (0, '$nom', '$prenom', '$login', '$mdp', '$email') WHERE ");
+  $id_user = $_GET['id_modifier'];
+
+
+  $bdd->exec("UPDATE UTILISATEURS 
+  SET NOM_USER = '$nom',
+  PRENOM_USER = '$prenom',
+  LOGIN_USER = '$login',
+  PASSWORD_USER = '$mdp',
+  EMAIL_USER = '$email'
+  WHERE ID_USER = '$id_user';");
+
   header("Location: gestion_utilisateurs.php");
   exit;
 ?>
-
-UPDATE client
-SET rue = '49 Rue Ameline',
-  ville = 'Saint-Eustache-la-Forêt',
-  code_postal = '76210'
-WHERE id = 2
