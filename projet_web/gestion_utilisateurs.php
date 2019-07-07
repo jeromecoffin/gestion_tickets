@@ -77,7 +77,7 @@
                     </form>
                   </td>
                   <td>
-                    <form action ="delete_utilisateurs.php" method="get">
+                    <form action ="supprimer/delete_utilisateurs.php" method="get">
                       <input type="hidden" name="row_id" value="<?php echo $donnees['ID_USER']; ?>">
                       <button type="submit" class="btn btn-danger">Delete</button>
                     </form>

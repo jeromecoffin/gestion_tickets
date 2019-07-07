@@ -75,9 +75,10 @@
                     </form>
                   </td>
                   <td>
-                  <button type="button" class="btn btn-danger" data-toggle="modal">
-                    Delete
-                    </button>
+                    <form action ="supprimer/delete_projets.php" method="get">
+                      <input type="hidden" name="row_id" value="<?php echo $donnees['ID_PROJET']; ?>">
+                      <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
                   </td>
                 </tr>
 
