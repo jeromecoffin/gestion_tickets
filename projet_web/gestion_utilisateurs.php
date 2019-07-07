@@ -71,7 +71,7 @@
                   <td><?php echo $donnees['LOGIN_USER']; ?></td>
                   <td><?php echo $donnees['EMAIL_USER']; ?></td>
                   <td>
-                    <form action ="modifier_utilisateurs.php" method="get">
+                    <form action ="modifier/modifier_utilisateurs.php" method="get">
                       <input type="hidden" name="row_id" value="<?php echo $donnees['ID_USER']; ?>">
                       <button type="submit" class="btn btn-success">Modifier</button>
                     </form>

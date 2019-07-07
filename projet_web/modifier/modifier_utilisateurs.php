@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="bs431/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bs431/css/bootstrap.min.css">
 
     <title>Home</title>
     
@@ -15,8 +15,7 @@
   <body>
 
   <?php 
-    include('navbar.php');
-    include('connexion_bdd.php');
+    include('../connexion_bdd.php');
 
     $id = $_GET['row_id'];
 
@@ -27,6 +26,18 @@
   ?>
 
   <!-- Begin Page Content -->
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+    <div class="row">
+      <div class="col">
+        <a href="../gestion_tickets.php" class="previous">&laquo; Previous</a>
+      </div>
+        Modifier Utilisateur
+    </div>
+  </nav>
+
+  <br>
+
   <div class="container-fluid">
     <form action ="bdd_modifier_utilisateurs.php" method="get">
       <div class="form-row">

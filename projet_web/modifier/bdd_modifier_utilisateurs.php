@@ -1,5 +1,5 @@
 <?php
-  include('connexion_bdd.php');
+  include('../connexion_bdd.php');
   $nom = $_GET['nom_modifier'];
   $prenom = $_GET['prenom_modifier'];
   $login = $_GET['login_modifier'];
@@ -16,6 +16,6 @@
   EMAIL_USER = '$email'
   WHERE ID_USER = '$id_user';");
 
-  header("Location: gestion_utilisateurs.php");
+  header("Location: ../gestion_utilisateurs.php");
   exit;
 ?>

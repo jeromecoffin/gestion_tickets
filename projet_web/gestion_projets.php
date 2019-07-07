@@ -69,7 +69,7 @@
                   <td><?php echo $donnees['DESCRIPTION_PROJET']; ?></td>
                   <td><?php echo $donnees['ID_CLIENT']; ?></td>
                   <td>
-                  <form action ="modifier_projets.php" method="get">
+                  <form action ="modifier/modifier_projets.php" method="get">
                       <input type="hidden" name="row_id" value="<?php echo $donnees['ID_PROJET']; ?>">
                       <button type="submit" class="btn btn-success">Modifier</button>
                     </form>

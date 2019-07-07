@@ -67,7 +67,7 @@
                   <td><?php echo $donnees['DESCRIPTION']; ?></td>
                   <td><?php echo 'VIDE'; ?></td>
                   <td>
-                  <form action ="modifier_tickets.php" method="get">
+                  <form action ="modifier/modifier_tickets.php" method="get">
                       <input type="hidden" name="row_id" value="<?php echo $donnees['ID_TICKET']; ?>">
                       <button type="submit" class="btn btn-success">Modifier</button>
                     </form>
