@@ -65,7 +65,14 @@
                   <th scope="row"><?php echo $donnees['projet_id']; ?></th>
                   <td><?php echo $donnees['projet_nom']; ?></td>
                   <td><?php echo $donnees['projet_creation']; ?></td>
-                  <td><?php echo $donnees['projet_cloture']; ?></td>
+                  <td>
+                    <?php 
+                      if ($donnees['projet_cloture'] == 1)
+                        echo "terminé";
+                      else
+                        echo "en cours";
+                    ?>
+                  </td>
                   <td><?php echo $donnees['projet_description']; ?></td>
                   <td><?php echo $donnees['projet_client_id']; ?></td>
                   <td>
