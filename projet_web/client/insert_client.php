@@ -4,8 +4,8 @@
   $numero = $_GET['numero_modal'];
   $email = $_GET['email_modal'];
   $ticket = $_GET['ticket_associe_modal'];
-  $bdd->exec("INSERT INTO CLIENT VALUES(0, '$nom', '$email', '$numero', '$ticket')");
-  header("Location: ../gestion_clients.php");
+  $bdd->exec("INSERT INTO client VALUES(0, '$nom', '$email', '$numero', '$ticket')");
+  header("Location: ../gestion_client.php");
   exit;
 ?>
 

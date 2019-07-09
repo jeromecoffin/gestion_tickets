@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../bs431/css/bootstrap.min.css">
 
-    <title>Modifier Client</title>
+    <title>Modifier Tickets</title>
     
   </head>
 
@@ -19,7 +19,7 @@
 
     $id = $_GET['row_id'];
 
-    $reponse = $bdd->prepare("SELECT * FROM CLIENT WHERE ID_CLIENT=:id");
+    $reponse = $bdd->prepare("SELECT * FROM ticket WHERE ticket_id=:id");
     $reponse->execute(['id' => $id]); 
     $user = $reponse->fetch();
     //print_r($user);
@@ -30,32 +30,34 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
     <div class="row">
       <div class="col">
-        <a href="../gestion_clients.php" class="previous">&laquo; Previous</a>
+        <a href="../gestion_ticket.php" class="previous">&laquo; Previous</a>
       </div>
-        Modifier Client
+        Modifier Ticket
     </div>
   </nav>
 
   <br>
 
   <div class="container-fluid">
-    <form action ="bdd_modifier_clients.php" method="get">
+    <form action ="update_ticket.php" method="get">
       <div class="form-row">
-        <input type="text" class="form-control" id="validationDefault00" name="id_modifier" placeholder="ID" value="<?php echo $user['ID_CLIENT'] ?>" required>
+        <input type="text" class="form-control" id="validationDefault00" name="id_modifier" placeholder="ID" value="<?php echo $user['ticket_id'] ?>" required>
 
       </div>
       <div class="form-row">
         <div class="col-md-4 mb-3">
-          <label for="validationDefault01">Nom</label>
-          <input type="text" class="form-control" id="validationDefault01" name="nom_modifier" placeholder="Nom" value="<?php echo $user['NOM_CLIENT'] ?>" required>
+          <label for="validationDefault01">Date de Creation</label>
+          <input type="text" class="form-control" id="validationDefault01" name="date_modifier" placeholder="Date de creation" value="<?php echo $user['ticket_creation'] ?>" required>
         </div>
         <div class="col-md-4 mb-3">
-          <label for="validationDefault02">Mail</label>
-          <input type="email" class="form-control" id="validationDefault02" name="mail_modifier" placeholder="Email" value="<?php echo $user['MAIL_CLIENT'] ?>" required>
+          <label for="validationDefault02">Titre</label>
+          <input type="text" class="form-control" id="validationDefault02" name="titre_modifier" placeholder="Titre" value="<?php echo $user['ticket_titre'] ?>" required>
         </div>
-        <div class="col-md-4 mb-3">
-          <label for="validationDefault03">Numero Client</label>
-          <input type="text" class="form-control" id="validationDefault03" name="numero_modifier" placeholder="Numero Client" value="<?php echo $user['NUMERO_CLIENT'] ?>" required>
+      </div>
+      <div class="form-row">
+        <div class="col-md-6 mb-3">
+          <label for="validationDefault03">Description</label>
+          <input type="text" class="form-control" id="validationDefault03" name="description_modifier" placeholder="Description" value="<?php echo $user['ticket_description'] ?>" required>
         </div>
       </div>
       <div class="form-group">

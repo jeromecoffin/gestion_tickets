@@ -38,7 +38,7 @@
                   <div class="h5 mb-0 font-weight-bold text-gray-800">
                     <?php
                       include('connexion_bdd.php');
-                      $response = $bdd->prepare("SELECT * FROM PROJET WHERE `CLOTURE`= 0;");
+                      $response = $bdd->prepare("SELECT * FROM projet WHERE `projet_cloture`= 0;");
                       $response->execute();
                       $count = $response->rowcount();
                       echo $count;
@@ -62,7 +62,7 @@
                   <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Solved Tickets</div>
                   <div class="h5 mb-0 font-weight-bold text-gray-800">
                     <?php
-                      $response = $bdd->prepare("SELECT * FROM PROJET WHERE `CLOTURE`= 1;");
+                      $response = $bdd->prepare("SELECT * FROM projet WHERE `projet_cloture`= 1;");
                       $response->execute();
                       $count = $response->rowcount();
                       echo $count;

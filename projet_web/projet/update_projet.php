@@ -8,14 +8,14 @@
   $client = $_GET['id_client_modifier'];
 
 
-  $bdd->exec("UPDATE PROJET 
-  SET DATE_CREATION = '$date',
-  CLOTURE = '$cloture',
-  NOM_PROJET = '$nom',
-  DESCRIPTION_PROJET = '$description'
-  WHERE ID_PROJET = '$id_projet';");
+  $bdd->exec("UPDATE projet 
+  SET projet_creation = '$date',
+  projet_cloture = '$cloture',
+  projet_nom = '$nom',
+  projet_description = '$description'
+  WHERE projet_id = '$id_projet';");
 
-  header("Location: ../gestion_projets.php");
+  header("Location: ../gestion_projet.php");
   exit;
 ?>
 

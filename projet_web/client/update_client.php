@@ -5,12 +5,12 @@
   $numero = $_GET['numero_modifier'];
   $id_client = $_GET['id_modifier'];
 
-  $bdd->exec("UPDATE CLIENT 
-  SET NOM_CLIENT = '$nom',
-  MAIL_CLIENT = '$mail',
-  NUMERO_CLIENT = '$numero'
-  WHERE ID_CLIENT = '$id_client';");
+  $bdd->exec("UPDATE client 
+  SET client_nom = '$nom',
+  client_email = '$mail',
+  client_numero = '$numero'
+  WHERE client_id = '$id_client';");
 
-  header("Location: ../gestion_clients.php");
+  header("Location: ../gestion_client.php");
   exit;
 ?>

@@ -10,16 +10,16 @@
         <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="gestion_utilisateurs.php">Utilisateurs</a>
+        <a class="nav-link" href="gestion_utilisateur.php">Utilisateurs</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="gestion_projets.php">Projets</a>
+        <a class="nav-link" href="gestion_projet.php">Projets</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="gestion_clients.php">Clients</a>
+        <a class="nav-link" href="gestion_client.php">Clients</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="gestion_tickets.php">Tickets</a>
+        <a class="nav-link" href="gestion_ticket.php">Tickets</a>
       </li>
     </ul>
     <ul class="navbar-nav ml-auto">

@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="bs431/css/bootstrap.min.css">
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <title>Gestion Clients</title>
+    <title>Gestion Tickets</title>
   </head>
 
   <body>
@@ -17,11 +17,7 @@
     <?php include('navbar.php'); ?>
 
     <!-- include modal -->
-    <?php 
-      include('add_modal/modal_ajouter_clients.html');
-      include('connexion_bdd.php');
-    ?>
-    
+    <?php include('ticket/ajouter_ticket.html'); ?>
 
     <!-- Body content -->
     <div class="container-fluid">
@@ -30,11 +26,11 @@
           <div class="container-fluid">
             <div class="row">
               <div class="col text-left">
-                <h6 class="m-0 font-weight-bold text-primary">Customer management</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Tickets management</h6>
               </div>
               <div class="col text-right">    
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAjouterClients">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAjouterTickets">
                   Ajouter
                 </button>
               </div>
@@ -47,38 +43,38 @@
               <thead>
                 <tr>
                   <th>ID</th>
-                  <th>Nom</th>
-                  <th>Mail</th>
-                  <th>Numero</th>
-                  <th>Ticket</th>
+                  <th>Titre</th>
+                  <th>Date de Creation</th>
+                  <th>Description</th>
+                  <th>Client</th>
                   <th>Modifier</th>
                   <th>Delete</th>
                 </tr>
               </thead>
               <tbody>
 
-                
+                <?php include('connexion_bdd.php'); ?>
                 <?php
                   // On récupère tout le contenu de la table
-                $reponse = $bdd->query('SELECT * FROM CLIENT');
+                $reponse = $bdd->query('SELECT * FROM ticket WHERE ticket_del = 0');
                 while ($donnees = $reponse->fetch()){
                 ?>
 
                 <tr>
-                  <th scope="row"><?php echo $donnees['ID_CLIENT']; ?></th>
-                  <td><?php echo $donnees['NOM_CLIENT']; ?></td>
-                  <td><?php echo $donnees['MAIL_CLIENT']; ?></td>
-                  <td><?php echo $donnees['NUMERO_CLIENT']; ?></td>
-                  <td><?php echo $donnees['ID_TICKET']; ?></td>
+                  <th scope="row"><?php echo $donnees['ticket_del']; ?></th>
+                  <td><?php echo $donnees['ticket_titre']; ?></td>
+                  <td><?php echo $donnees['ticket_creation']; ?></td>
+                  <td><?php echo $donnees['ticket_description']; ?></td>
+                  <td><?php echo 'VIDE'; ?></td>
                   <td>
-                  <form action ="modifier/modifier_clients.php" method="get">
-                      <input type="hidden" name="row_id" value="<?php echo $donnees['ID_CLIENT']; ?>">
+                  <form action ="ticket/modifier_ticket.php" method="get">
+                      <input type="hidden" name="row_id" value="<?php echo $donnees['ticket_id']; ?>">
                       <button type="submit" class="btn btn-success">Modifier</button>
                     </form>
                   </td>
                   <td>
-                    <form action ="supprimer/delete_clients.php" method="get">
-                      <input type="hidden" name="row_id" value="<?php echo $donnees['ID_CLIENT']; ?>">
+                    <form action ="ticket/delete_ticket.php" method="get">
+                      <input type="hidden" name="row_id" value="<?php echo $donnees['ticket_id']; ?>">
                       <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                   </td>
@@ -88,7 +84,6 @@
                 }     
                 $reponse->closeCursor(); // Termine le traitement de la requête
                 ?>
-
               </tbody>
             </table>
           </div>

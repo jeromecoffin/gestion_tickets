@@ -19,7 +19,7 @@
 
     $id = $_GET['row_id'];
 
-    $reponse = $bdd->prepare("SELECT * FROM PROJET WHERE ID_PROJET=:id");
+    $reponse = $bdd->prepare("SELECT * FROM projet WHERE projet_id=:id");
     $reponse->execute(['id' => $id]); 
     $user = $reponse->fetch();
     //print_r($user);
@@ -30,7 +30,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
     <div class="row">
       <div class="col">
-        <a href="../gestion_projets.php" class="previous">&laquo; Previous</a>
+        <a href="../gestion_projet.php" class="previous">&laquo; Previous</a>
       </div>
         Modifier Projet
     </div>
@@ -39,33 +39,33 @@
   <br>
 
   <div class="container-fluid">
-    <form action ="bdd_modifier_projets.php" method="get">
+    <form action ="update_projet.php" method="get">
       <div class="form-row">
-        <input type="text" class="form-control" id="validationDefault00" name="id_modifier" placeholder="ID" value="<?php echo $user['ID_PROJET'] ?>" required>
+        <input type="text" class="form-control" id="validationDefault00" name="id_modifier" placeholder="ID" value="<?php echo $user['projet_id'] ?>" required>
 
       </div>
       <div class="form-row">
         <div class="col-md-4 mb-3">
           <label for="validationDefault01">Date de Creation</label>
-          <input type="text" class="form-control" id="validationDefault01" name="date_modifier" placeholder="Date de creation" value="<?php echo $user['DATE_CREATION'] ?>" required>
+          <input type="text" class="form-control" id="validationDefault01" name="date_modifier" placeholder="Date de creation" value="<?php echo $user['projet_creation'] ?>" required>
         </div>
         <div class="col-md-4 mb-3">
           <label for="validationDefault02">Cloture</label>
-          <input type="text" class="form-control" id="validationDefault02" name="cloture_modifier" placeholder="Cloture" value="<?php echo $user['CLOTURE'] ?>" required>
+          <input type="text" class="form-control" id="validationDefault02" name="cloture_modifier" placeholder="Cloture" value="<?php echo $user['projet_cloture'] ?>" required>
         </div>
         <div class="col-md-4 mb-3">
           <label for="validationDefault03">Nom Projet</label>
-          <input type="text" class="form-control" id="validationDefault03" name="nom_modifier" placeholder="Nom" value="<?php echo $user['NOM_PROJET'] ?>" required>
+          <input type="text" class="form-control" id="validationDefault03" name="nom_modifier" placeholder="Nom" value="<?php echo $user['projet_nom'] ?>" required>
         </div>
       </div>
       <div class="form-row">
         <div class="col-md-6 mb-3">
           <label for="validationDefault03">Description</label>
-          <input type="text" class="form-control" id="validationDefault04" name="description_modifier" placeholder="Description" value="<?php echo $user['DESCRIPTION_PROJET'] ?>" required>
+          <input type="text" class="form-control" id="validationDefault04" name="description_modifier" placeholder="Description" value="<?php echo $user['projet_description'] ?>" required>
         </div>
         <div class="col-md-6 mb-3">
           <label for="validationDefault03">ID Client</label>
-          <input type="text" class="form-control" id="validationDefault05" name="id_client_modifier" placeholder="ID Client" value="<?php echo $user['ID_CLIENT'] ?>" required>
+          <input type="text" class="form-control" id="validationDefault05" name="id_client_modifier" placeholder="ID Client" value="<?php echo $user['projet_client_id'] ?>" required>
         </div>
       </div>
       <div class="form-group">

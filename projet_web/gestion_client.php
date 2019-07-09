@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="bs431/css/bootstrap.min.css">
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <title>Gestion projets</title>
+    <title>Gestion Clients</title>
   </head>
 
   <body>
@@ -16,8 +16,12 @@
     <!-- include navigation bar -->
     <?php include('navbar.php'); ?>
 
-    <!-- include modal -->    
-    <?php include('add_modal/modal_ajouter_projets.html'); ?>
+    <!-- include modal -->
+    <?php 
+      include('client/ajouter_client.html');
+      include('connexion_bdd.php');
+    ?>
+    
 
     <!-- Body content -->
     <div class="container-fluid">
@@ -26,11 +30,11 @@
           <div class="container-fluid">
             <div class="row">
               <div class="col text-left">
-                <h6 class="m-0 font-weight-bold text-primary">Project management</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Customer management</h6>
               </div>
               <div class="col text-right">    
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAjouterProjets">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAjouterClients">
                   Ajouter
                 </button>
               </div>
@@ -44,39 +48,37 @@
                 <tr>
                   <th>ID</th>
                   <th>Nom</th>
-                  <th>Creation</th>
-                  <th>Cloture</th>
-                  <th>Description</th>
-                  <th>Client</th>
+                  <th>Mail</th>
+                  <th>Numero</th>
+                  <th>Ticket</th>
                   <th>Modifier</th>
                   <th>Delete</th>
                 </tr>
               </thead>
               <tbody>
 
-                <?php include('connexion_bdd.php'); ?>
+                
                 <?php
                   // On récupère tout le contenu de la table
-                $reponse = $bdd->query('SELECT * FROM PROJET');
+                $reponse = $bdd->query('SELECT * FROM client WHERE client_del = 0');
                 while ($donnees = $reponse->fetch()){
                 ?>
 
                 <tr>
-                  <th scope="row"><?php echo $donnees['ID_PROJET']; ?></th>
-                  <td><?php echo $donnees['NOM_PROJET']; ?></td>
-                  <td><?php echo $donnees['DATE_CREATION']; ?></td>
-                  <td><?php echo $donnees['CLOTURE']; ?></td>
-                  <td><?php echo $donnees['DESCRIPTION_PROJET']; ?></td>
-                  <td><?php echo $donnees['ID_CLIENT']; ?></td>
+                  <th scope="row"><?php echo $donnees['client_id']; ?></th>
+                  <td><?php echo $donnees['client_nom']; ?></td>
+                  <td><?php echo $donnees['client_email']; ?></td>
+                  <td><?php echo $donnees['client_numero']; ?></td>
+                  <td><?php echo $donnees['client_ticket']; ?></td>
                   <td>
-                  <form action ="modifier/modifier_projets.php" method="get">
-                      <input type="hidden" name="row_id" value="<?php echo $donnees['ID_PROJET']; ?>">
+                  <form action ="client/modifier_client.php" method="get">
+                      <input type="hidden" name="row_id" value="<?php echo $donnees['client_id']; ?>">
                       <button type="submit" class="btn btn-success">Modifier</button>
                     </form>
                   </td>
                   <td>
-                    <form action ="supprimer/delete_projets.php" method="get">
-                      <input type="hidden" name="row_id" value="<?php echo $donnees['ID_PROJET']; ?>">
+                    <form action ="client/delete_client.php" method="get">
+                      <input type="hidden" name="row_id" value="<?php echo $donnees['client_id']; ?>">
                       <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                   </td>

@@ -6,12 +6,12 @@
   $id_ticket = $_GET['id_modifier'];
 
 
-  $bdd->exec("UPDATE TICKET 
-  SET DATE_CREATION = '$date',
-  TITRE = '$titre',
-  DESCRIPTION = '$description'
-  WHERE ID_TICKET = '$id_ticket';");
+  $bdd->exec("UPDATE ticket 
+  SET ticket_creation = '$date',
+  ticket_titre = '$titre',
+  ticket_description = '$description'
+  WHERE ticket_id = '$id_ticket';");
 
-  header("Location: ../gestion_tickets.php");
+  header("Location: ../gestion_ticket.php");
   exit;
 ?>
