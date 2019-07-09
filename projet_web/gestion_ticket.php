@@ -75,7 +75,7 @@
                   <td>
                     <form action ="ticket/delete_ticket.php" method="get">
                       <input type="hidden" name="row_id" value="<?php echo $donnees['ticket_id']; ?>">
-                      <button type="submit" class="btn btn-danger">Delete</button>
+                      <button type="submit" class="btn btn-danger" onclick="return confirm('Voulez-vous vraiment suprimer ce ticket ?');" >Delete</button>
                     </form>
                   </td>
                 </tr>

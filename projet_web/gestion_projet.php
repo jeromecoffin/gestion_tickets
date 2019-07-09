@@ -82,9 +82,9 @@
                     </form>
                   </td>
                   <td>
-                    <form action ="projet/delete_projet.php" method="get">
+                    <form action ="projet/delete_projet.php" method="get" >
                       <input type="hidden" name="row_id" value="<?php echo $donnees['projet_id']; ?>">
-                      <button type="submit" class="btn btn-danger">Delete</button>
+                      <button type="submit" class="btn btn-danger" onclick="return confirm('Voulez-vous vraiment suprimer ce projet ?');">Delete</button>
                     </form>
                   </td>
                 </tr>

@@ -76,7 +76,7 @@
                   <td>
                     <form action ="utilisateur/delete_utilisateur.php" method="get">
                       <input type="hidden" name="row_id" value="<?php echo $donnees['utilisateur_id']; ?>">
-                      <button type="submit" class="btn btn-danger">Delete</button>
+                      <button type="submit" class="btn btn-danger" onclick="return confirm('Voulez-vous vraiment suprimer cet utilisateur ?');" >Delete</button>
                     </form>
                   </td>
                 </tr>
