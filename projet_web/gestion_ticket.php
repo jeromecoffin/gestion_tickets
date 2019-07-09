@@ -65,7 +65,14 @@
                   <td><?php echo $donnees['ticket_titre']; ?></td>
                   <td><?php echo $donnees['ticket_creation']; ?></td>
                   <td><?php echo $donnees['ticket_description']; ?></td>
-                  <td><?php echo 'VIDE'; ?></td>
+                  <td>
+                    <?php
+                      $tus = $donnees['ticket_id'];
+                      $res = $bdd->query("SELECT * FROM client WHERE client_ticket_id = $tus;");
+                      $data = $res->fetch();
+                      echo $data['client_nom'];
+                    ?>
+                  </td>
                   <td>
                   <form action ="ticket/modifier_ticket.php" method="get">
                       <input type="hidden" name="row_id" value="<?php echo $donnees['ticket_id']; ?>">
