@@ -7,7 +7,7 @@
 #
 # Hôte: localhost (MySQL 5.7.25)
 # Base de données: gestion_tickets
-# Temps de génération: 2019-07-09 14:12:26 +0000
+# Temps de génération: 2019-07-11 16:02:26 +0000
 # ************************************************************
 
 
@@ -30,21 +30,20 @@ CREATE TABLE `client` (
   `client_nom` varchar(50) NOT NULL DEFAULT '',
   `client_email` varchar(50) NOT NULL DEFAULT '',
   `client_numero` varchar(50) NOT NULL DEFAULT '',
-  `client_ticket_id` int(11) NOT NULL,
   `client_del` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`client_id`),
-  KEY `CLIENT_TICKET_FK` (`client_ticket_id`),
-  CONSTRAINT `CLIENT_TICKET_FK` FOREIGN KEY (`client_ticket_id`) REFERENCES `TICKET` (`ticket_id`)
+  PRIMARY KEY (`client_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `client` WRITE;
 /*!40000 ALTER TABLE `client` DISABLE KEYS */;
 
-INSERT INTO `client` (`client_id`, `client_nom`, `client_email`, `client_numero`, `client_ticket_id`, `client_del`)
+INSERT INTO `client` (`client_id`, `client_nom`, `client_email`, `client_numero`, `client_del`)
 VALUES
-	(2,'Aspera','contact@aspera.com','1',1,0),
-	(3,'Dassault','contact@3ds.com','3',3,0),
-	(4,'CA','contact@ca.fr','4',4,0);
+	(2,'Aspera','contact@aspera.com','1',0),
+	(3,'Dassault','contact@3ds.com','3',0),
+	(4,'CA','contact@ca.fr','4',0),
+	(5,'Technips','contact@technip-dsi.frs','123s',0),
+	(6,'Orange','orange.secu@orange.fr','45',1);
 
 /*!40000 ALTER TABLE `client` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -75,7 +74,11 @@ INSERT INTO `projet` (`projet_id`, `projet_creation`, `projet_cloture`, `projet_
 VALUES
 	(6,'2019-06-28',1,'premier_projet','projet de test',2,0),
 	(8,'1998-07-18',1,'projet de foou','un petit projet',4,0),
-	(12,'2007-08-31',0,'projet en cours','projet en cours de test',3,0);
+	(12,'2007-08-31',0,'projet en cours','projet en cours de test',3,0),
+	(13,'2008-12-24',0,'projet','zERZERd',4,0),
+	(14,'2019-07-12',1,'projet de gestions','projet test de dates',2,0),
+	(15,'2019-07-11',0,'encore','On reteste la date',4,1),
+	(16,'2019-07-11',0,'integration','description de fou',2,0);
 
 /*!40000 ALTER TABLE `projet` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -94,8 +97,8 @@ CREATE TABLE `statut` (
   `commentaire` varchar(400) NOT NULL DEFAULT '',
   PRIMARY KEY (`utilisateur_id`,`ticket_id`),
   KEY `STATUT_TICKET0_FK` (`ticket_id`),
-  CONSTRAINT `STATUT_TICKET0_FK` FOREIGN KEY (`ticket_id`) REFERENCES `ticket` (`ticket_id`),
-  CONSTRAINT `STATUT_UTILISATEURS_FK` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateur` (`utilisateur_id`)
+  CONSTRAINT `STATUT_TICKET0_FK` FOREIGN KEY (`ticket_id`) REFERENCES `TICKET` (`ticket_id`),
+  CONSTRAINT `STATUT_UTILISATEURS_FK` FOREIGN KEY (`utilisateur_id`) REFERENCES `UTILISATEURS` (`utilisateur_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -111,19 +114,23 @@ CREATE TABLE `ticket` (
   `ticket_titre` varchar(50) NOT NULL DEFAULT '',
   `ticket_description` varchar(50) NOT NULL DEFAULT '',
   `ticket_del` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`ticket_id`)
+  `ticket_client_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ticket_id`),
+  KEY `ticket_client_id` (`ticket_client_id`),
+  CONSTRAINT `ticket_ibfk_1` FOREIGN KEY (`ticket_client_id`) REFERENCES `client` (`client_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `ticket` WRITE;
 /*!40000 ALTER TABLE `ticket` DISABLE KEYS */;
 
-INSERT INTO `ticket` (`ticket_id`, `ticket_creation`, `ticket_titre`, `ticket_description`, `ticket_del`)
+INSERT INTO `ticket` (`ticket_id`, `ticket_creation`, `ticket_titre`, `ticket_description`, `ticket_del`, `ticket_client_id`)
 VALUES
-	(1,'2019-06-28','premier','ticket de test',0),
-	(2,'2019-05-12','second','ticket de test',0),
-	(3,'2018-02-16','monTicket','resolution de bug',0),
-	(4,'2019-04-12','affichage','probleme affichage',0),
-	(5,'1965-06-12','test','naissance Emrick',0);
+	(1,'2019-06-28','premier','ticket de test',0,6),
+	(2,'2019-05-12','second','ticket de test',0,4),
+	(3,'2018-02-16','monTicket','resolution de bug',0,2),
+	(4,'2019-04-12','affichage','probleme affichage',0,5),
+	(5,'1965-06-12','test','naissance Emrick',0,3),
+	(6,'2019-04-13','column','fk client',0,2);
 
 /*!40000 ALTER TABLE `ticket` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -154,8 +161,10 @@ VALUES
 	(2,'LEOU','Camille','leou.camille','KMzer','camille.leou@efrei.net',0),
 	(4,'DELASECU','Jean-Quentin','DockerCcasse','azerty','jq.secu@wanadoo.fr',0),
 	(5,'Dupond','Jean','dupond.jean','kllshkfs','jean.dupond@gmail.com',0),
-	(6,'DOE','John','terminator','kmzer','monmail@secu.com',0),
-	(7,'NOM','Prenomm','login','password','prenom.nom@server.ex',0);
+	(6,'DOEs','Jean','terminators','kmzers','monmail@secu.coms',0),
+	(7,'NOMs','Prenomm','login','password','prenom.nom@server.ex',1),
+	(8,'DURAND','Thierry','thithi','erzefc','thierryd@gmail.com',1),
+	(9,'Rose','Axl','axl.rose','novemberRain','a.rose@gnr.com',0);
 
 /*!40000 ALTER TABLE `utilisateur` ENABLE KEYS */;
 UNLOCK TABLES;

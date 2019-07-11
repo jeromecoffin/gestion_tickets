@@ -50,7 +50,6 @@
                   <th>Nom</th>
                   <th>Mail</th>
                   <th>Numero</th>
-                  <th>Ticket</th>
                   <th>Modifier</th>
                   <th>Delete</th>
                 </tr>
@@ -69,7 +68,6 @@
                   <td><?php echo $donnees['client_nom']; ?></td>
                   <td><?php echo $donnees['client_email']; ?></td>
                   <td><?php echo $donnees['client_numero']; ?></td>
-                  <td><?php echo $donnees['client_ticket_id']; ?></td>
                   <td>
                   <form action ="client/modifier_client.php" method="get">
                       <input type="hidden" name="row_id" value="<?php echo $donnees['client_id']; ?>">

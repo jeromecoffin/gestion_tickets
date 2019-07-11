@@ -74,7 +74,14 @@
                     ?>
                   </td>
                   <td><?php echo $donnees['projet_description']; ?></td>
-                  <td><?php echo $donnees['projet_client_id']; ?></td>
+                  <td>
+                    <?php
+                      $tus = $donnees['projet_client_id'];
+                      $res = $bdd->query("SELECT * FROM client WHERE client_id = $tus;");
+                      $data = $res->fetch();
+                      echo $data['client_nom'];
+                    ?>
+                  </td>
                   <td>
                   <form action ="projet/modifier_projet.php" method="get">
                       <input type="hidden" name="row_id" value="<?php echo $donnees['projet_id']; ?>">

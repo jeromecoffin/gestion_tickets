@@ -61,14 +61,14 @@
                 ?>
 
                 <tr>
-                  <th scope="row"><?php echo $donnees['ticket_del']; ?></th>
+                  <th scope="row"><?php echo $donnees['ticket_id']; ?></th>
                   <td><?php echo $donnees['ticket_titre']; ?></td>
                   <td><?php echo $donnees['ticket_creation']; ?></td>
                   <td><?php echo $donnees['ticket_description']; ?></td>
                   <td>
                     <?php
-                      $tus = $donnees['ticket_id'];
-                      $res = $bdd->query("SELECT * FROM client WHERE client_ticket_id = $tus;");
+                      $tus = $donnees['ticket_client_id'];
+                      $res = $bdd->query("SELECT * FROM client WHERE client_id = $tus;");
                       $data = $res->fetch();
                       echo $data['client_nom'];
                     ?>

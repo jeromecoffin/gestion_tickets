@@ -4,7 +4,7 @@
   $client = $_GET['client_modal'];
   $cloture = $_GET['cloture_modal'];
   $description = $_GET['description_modal'];
-  $date_creation = $_GET['date_creation_modal'];
+  $date_creation = date("Y-m-d");
 
 
 
