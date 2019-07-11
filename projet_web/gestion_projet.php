@@ -17,7 +17,7 @@
     <?php include('navbar.php'); ?>
 
     <!-- include modal -->    
-    <?php include('projet/ajouter_projet.html'); ?>
+    <?php include('projet/ajouter_projet.php'); ?>
 
     <!-- Body content -->
     <div class="container-fluid">
