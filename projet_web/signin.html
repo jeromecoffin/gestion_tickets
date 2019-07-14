@@ -7,28 +7,26 @@
     <title>Signin</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/Applications/MAMP/htdocs/projet_web/bs431/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bs431/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/signin.css" rel="stylesheet">
   </head>
 
   <body class="text-center">
-    <form class="form-signin" action="index.html">
-      <img class="mb-4" src="img/apple.png" alt="" width="72" height="72">
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-      <label for="inputEmail" class="sr-only">Email address</label>
-      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-      <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
+    <form action ="connexion.php" method="post">
+      <div class="form-group">
+        <input type="text" class="form-control form-control-user" name="login_modal" placeholder="Login">
+      </div>  
+      <div class="form-group">
+        <input type="password" class="form-control form-control-user" name="password_modal" placeholder="Password">
+      </div>             
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+        <button type="submit" class="btn btn-primary">Connexion</button>
       </div>
-        <!---<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>-->
-        <input type="submit" value="Envoyer" />
-      <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+      <span class="password">Forgot <a href="#">password</a> ?</span>
+
     </form>
   </body>
 </html>

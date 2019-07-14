@@ -1,3 +1,10 @@
+<?php
+session_start();
+if($_SESSION['isloged'] != "true"){
+  header('Location: deconnexion.php');
+}
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -34,11 +41,11 @@
             <div class="card-body">
               <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
-                  <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Ongoing Tickets</div>
+                  <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Projet en cours</div>
                   <div class="h5 mb-0 font-weight-bold text-gray-800">
                     <?php
                       include('connexion_bdd.php');
-                      $response = $bdd->prepare("SELECT * FROM projet WHERE `projet_cloture`= 0;");
+                      $response = $bdd->prepare("SELECT * FROM projet WHERE `projet_cloture`= 0 AND projet_del = 0;");
                       $response->execute();
                       $count = $response->rowcount();
                       echo $count;
@@ -59,10 +66,10 @@
             <div class="card-body">
               <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
-                  <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Solved Tickets</div>
+                  <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Projets résolus</div>
                   <div class="h5 mb-0 font-weight-bold text-gray-800">
                     <?php
-                      $response = $bdd->prepare("SELECT * FROM projet WHERE `projet_cloture`= 1;");
+                      $response = $bdd->prepare("SELECT * FROM projet WHERE `projet_cloture`= 1 AND projet_del = 0;");
                       $response->execute();
                       $count = $response->rowcount();
                       echo $count;
@@ -83,7 +90,7 @@
             <div class="card-body">
               <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
-                  <div class="text-xs font-weight-bold text-info text-uppercase mb-1">KPI</div>
+                  <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total de ticket </div>
                   <div class="row no-gutters align-items-center">
                     <div class="col-auto">
                       <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">40%</div>
@@ -109,7 +116,7 @@
             <div class="card-body">
               <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
-                  <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Score</div>
+                  <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Projet récent</div>
                   <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
                 </div>
                 <div class="col-auto">
