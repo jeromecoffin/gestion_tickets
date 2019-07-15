@@ -7,7 +7,7 @@
 #
 # Hôte: localhost (MySQL 5.7.25)
 # Base de données: gestion_tickets
-# Temps de génération: 2019-07-15 13:52:06 +0000
+# Temps de génération: 2019-07-15 15:29:18 +0000
 # ************************************************************
 
 
@@ -75,10 +75,11 @@ VALUES
 	(6,'2019-06-28',1,'premier_projet','projet de test',2,0),
 	(8,'1998-07-18',1,'projet de foou','un petit projet',4,0),
 	(12,'2007-08-31',0,'projet en cours','projet en cours de test',3,0),
-	(13,'2008-12-24',0,'projet','zERZERd',4,0),
+	(13,'2008-12-24',0,'projet','zERZERd',4,1),
 	(14,'2019-07-12',1,'projet de gestions','projet test de dates',2,0),
 	(15,'2019-07-11',0,'encore','On reteste la date',4,1),
-	(16,'2019-07-11',0,'integration','description de fou',2,0);
+	(16,'2019-07-11',0,'integration','description de fou',2,0),
+	(17,'2019-07-10',0,'date ojourdui','cette date',3,0);
 
 /*!40000 ALTER TABLE `projet` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -124,22 +125,25 @@ CREATE TABLE `ticket` (
   `ticket_description` varchar(50) NOT NULL DEFAULT '',
   `ticket_del` int(11) NOT NULL DEFAULT '0',
   `ticket_client_id` int(11) DEFAULT NULL,
+  `ticket_projet_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`ticket_id`),
   KEY `ticket_client_id` (`ticket_client_id`),
-  CONSTRAINT `ticket_ibfk_1` FOREIGN KEY (`ticket_client_id`) REFERENCES `client` (`client_id`)
+  KEY `ticket_projet_id` (`ticket_projet_id`),
+  CONSTRAINT `ticket_ibfk_1` FOREIGN KEY (`ticket_client_id`) REFERENCES `client` (`client_id`),
+  CONSTRAINT `ticket_ibfk_2` FOREIGN KEY (`ticket_projet_id`) REFERENCES `projet` (`projet_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `ticket` WRITE;
 /*!40000 ALTER TABLE `ticket` DISABLE KEYS */;
 
-INSERT INTO `ticket` (`ticket_id`, `ticket_creation`, `ticket_titre`, `ticket_description`, `ticket_del`, `ticket_client_id`)
+INSERT INTO `ticket` (`ticket_id`, `ticket_creation`, `ticket_titre`, `ticket_description`, `ticket_del`, `ticket_client_id`, `ticket_projet_id`)
 VALUES
-	(1,'2019-06-28','premier','ticket de test',0,6),
-	(2,'2019-05-12','second','ticket de test',0,4),
-	(3,'2018-02-16','monTicket','resolution de bug',0,2),
-	(4,'2019-04-12','affichage','probleme affichage',0,5),
-	(5,'1965-06-12','test','naissance Emrick',0,3),
-	(6,'2019-04-13','column','fk client',0,2);
+	(1,'2019-06-28','premier','ticket de test',0,6,8),
+	(2,'2019-05-12','second','ticket de test',0,4,12),
+	(3,'2018-02-16','monTicket','resolution de bug',0,2,6),
+	(4,'2019-04-12','affichage','probleme affichage',0,5,17),
+	(5,'1965-06-12','test','naissance Emrick',1,3,15),
+	(6,'2019-04-13','column','fk client',1,2,13);
 
 /*!40000 ALTER TABLE `ticket` ENABLE KEYS */;
 UNLOCK TABLES;
