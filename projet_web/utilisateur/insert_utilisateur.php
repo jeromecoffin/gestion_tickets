@@ -5,7 +5,7 @@
   $login = $_GET['login_modal'];
   $mdp = $_GET['mdp_modal'];
   $email = $_GET['email_modal'];
-  $bdd->exec("INSERT INTO utilisateur VALUES(0, '$nom', '$prenom', '$login', '$mdp', '$email', 0)");
+  $bdd->exec("INSERT INTO utilisateur VALUES(0, '$nom', '$prenom', '$login', '$mdp', '$email', 0, 0)");
   header("Location: ../gestion_utilisateur.php");
   exit;
 ?>

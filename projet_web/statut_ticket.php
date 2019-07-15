@@ -1,10 +1,3 @@
-<?php
-session_start();
-if($_SESSION['isloged'] != "true"){
-  header('Location: deconnexion.php');
-}
-?>
-
 <!doctype html>
 <html lang="en">
 
@@ -15,18 +8,29 @@ if($_SESSION['isloged'] != "true"){
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="bs431/css/bootstrap.min.css">
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <title>Gestion utilisateurs</title>
+    <title>Statut</title>
   </head>
 
   <body>
 
     <!-- include navigation bar -->
-    <?php include('navbar.php'); ?>
 
-    <!-- include modals -->
-    <?php include('utilisateur/ajouter_utilisateur.html'); ?>
+    <?php 
+      include('connexion_bdd.php');
+      include('ajouter_statut.html');
+      $id = $_GET['row_id'];
+    ?>
     
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+    <div class="row">
+      <div class="col">
+        <a href="gestion_ticket_dev.php" class="previous">&laquo; Previous</a>
+      </div>
+        Statut ticket
+    </div>
+  </nav>
 
+  <br>
     <!-- Body content -->
     <div class="container-fluid">
       <div class="card shadow mb-4">
@@ -34,11 +38,11 @@ if($_SESSION['isloged'] != "true"){
           <div class="container-fluid">
             <div class="row">
               <div class="col text-left">
-                <h6 class="m-0 font-weight-bold text-primary">User management</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Statut <?php echo $id; ?></h6>
               </div>
               <div class="col text-right">    
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target='#modalAjouterUtilisateurs'>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAjouterStatut">
                   Ajouter
                 </button>
               </div>
@@ -50,43 +54,36 @@ if($_SESSION['isloged'] != "true"){
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
-                  <th>ID</th>
-                  <th>Nom</th>
-                  <th>Prenom</th>
-                  <th>Login</th>
-                  <th>email</th>
-                  <th>Modify</th>
+                  <th>Date</th>
+                  <th>Statut</th>
+                  <th>Commentaire</th>
+                  <th>Modifier</th>
                   <th>Delete</th>
                 </tr>
               </thead>
               <tbody>
 
-                <?php include('connexion_bdd.php'); ?>
+                
                 <?php
                   // On récupère tout le contenu de la table
-                $reponse = $bdd->query('SELECT * FROM utilisateur WHERE utilisateur_del = 0');
+                $reponse = $bdd->query("SELECT * FROM statut WHERE ticket_id = '$id'");
                 while ($donnees = $reponse->fetch()){
                 ?>
 
                 <tr>
-                  <th scope="row"><?php echo $donnees['utilisateur_id']; ?></th>
-                  <td><?php echo $donnees['utilisateur_nom']; ?></td>
-                  <td><?php echo $donnees['utilisateur_prenom']; ?></td>
-                  <td><?php echo $donnees['utilisateur_login']; ?></td>
-                  <td><?php echo $donnees['utilisateur_email']; ?></td>
+                  <th scope="row"><?php echo $donnees['date_heure']; ?></th>
+                  <td><?php echo $donnees['statut']; ?></td>
+                  <td><?php echo $donnees['commentaire']; ?></td>
                   <td>
-                    <form action ="utilisateur/modifier_utilisateur.php" method="get">
-                      <input type="hidden" name="row_id" value="<?php echo $donnees['utilisateur_id']; ?>">
+                  <form action ="#" method="get">
+                      <input type="hidden" name="row_id" value="<?php echo $donnees['ticket_id']; ?>">
                       <button type="submit" class="btn btn-success">Modifier</button>
                     </form>
                   </td>
                   <td>
-                    <form action ="utilisateur/delete_utilisateur.php" method="get">
-                      <input type="hidden" name="row_id" value="<?php echo $donnees['utilisateur_id']; ?>">
-                      <button type="submit" class="btn btn-danger" 
-                        onclick="return confirm('Voulez-vous vraiment supprimer cet utilisateur ?');" >
-                        Delete
-                      </button>
+                    <form action ="#" method="get">
+                      <input type="hidden" name="row_id" value="<?php echo $donnees['ticket_id']; ?>">
+                      <button type="submit" class="btn btn-danger" onclick="return confirm('Voulez-vous vraiment suprimer ce client ?');">Delete</button>
                     </form>
                   </td>
                 </tr>

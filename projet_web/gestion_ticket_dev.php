@@ -1,10 +1,3 @@
-<?php
-session_start();
-if($_SESSION['isloged'] != "true"){
-  header('Location: deconnexion.php');
-}
-?>
-
 <!doctype html>
 <html lang="en">
 
@@ -15,17 +8,13 @@ if($_SESSION['isloged'] != "true"){
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="bs431/css/bootstrap.min.css">
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <title>Gestion utilisateurs</title>
+    <title>Gestion Tickets</title>
   </head>
 
   <body>
 
     <!-- include navigation bar -->
     <?php include('navbar.php'); ?>
-
-    <!-- include modals -->
-    <?php include('utilisateur/ajouter_utilisateur.html'); ?>
-    
 
     <!-- Body content -->
     <div class="container-fluid">
@@ -34,13 +23,7 @@ if($_SESSION['isloged'] != "true"){
           <div class="container-fluid">
             <div class="row">
               <div class="col text-left">
-                <h6 class="m-0 font-weight-bold text-primary">User management</h6>
-              </div>
-              <div class="col text-right">    
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target='#modalAjouterUtilisateurs'>
-                  Ajouter
-                </button>
+                <h6 class="m-0 font-weight-bold text-primary">Tickets management</h6>
               </div>
             </div>
           </div>
@@ -51,12 +34,11 @@ if($_SESSION['isloged'] != "true"){
               <thead>
                 <tr>
                   <th>ID</th>
-                  <th>Nom</th>
-                  <th>Prenom</th>
-                  <th>Login</th>
-                  <th>email</th>
-                  <th>Modify</th>
-                  <th>Delete</th>
+                  <th>Titre</th>
+                  <th>Date de Creation</th>
+                  <th>Description</th>
+                  <th>Client</th>
+                  <th>Statut</th>
                 </tr>
               </thead>
               <tbody>
@@ -64,29 +46,27 @@ if($_SESSION['isloged'] != "true"){
                 <?php include('connexion_bdd.php'); ?>
                 <?php
                   // On récupère tout le contenu de la table
-                $reponse = $bdd->query('SELECT * FROM utilisateur WHERE utilisateur_del = 0');
+                $reponse = $bdd->query('SELECT * FROM ticket WHERE ticket_del = 0');
                 while ($donnees = $reponse->fetch()){
                 ?>
 
                 <tr>
-                  <th scope="row"><?php echo $donnees['utilisateur_id']; ?></th>
-                  <td><?php echo $donnees['utilisateur_nom']; ?></td>
-                  <td><?php echo $donnees['utilisateur_prenom']; ?></td>
-                  <td><?php echo $donnees['utilisateur_login']; ?></td>
-                  <td><?php echo $donnees['utilisateur_email']; ?></td>
+                  <th scope="row"><?php echo $donnees['ticket_id']; ?></th>
+                  <td><?php echo $donnees['ticket_titre']; ?></td>
+                  <td><?php echo $donnees['ticket_creation']; ?></td>
+                  <td><?php echo $donnees['ticket_description']; ?></td>
                   <td>
-                    <form action ="utilisateur/modifier_utilisateur.php" method="get">
-                      <input type="hidden" name="row_id" value="<?php echo $donnees['utilisateur_id']; ?>">
-                      <button type="submit" class="btn btn-success">Modifier</button>
-                    </form>
+                    <?php
+                      $tus = $donnees['ticket_client_id'];
+                      $res = $bdd->query("SELECT * FROM client WHERE client_id = $tus;");
+                      $data = $res->fetch();
+                      echo $data['client_nom'];
+                    ?>
                   </td>
                   <td>
-                    <form action ="utilisateur/delete_utilisateur.php" method="get">
-                      <input type="hidden" name="row_id" value="<?php echo $donnees['utilisateur_id']; ?>">
-                      <button type="submit" class="btn btn-danger" 
-                        onclick="return confirm('Voulez-vous vraiment supprimer cet utilisateur ?');" >
-                        Delete
-                      </button>
+                  <form action ="statut_ticket.php" method="get">
+                      <input type="hidden" name="row_id" value="<?php echo $donnees['ticket_id']; ?>">
+                      <button type="submit" class="btn btn-primary">Statut</button>
                     </form>
                   </td>
                 </tr>
@@ -95,7 +75,6 @@ if($_SESSION['isloged'] != "true"){
                 }     
                 $reponse->closeCursor(); // Termine le traitement de la requête
                 ?>
-
               </tbody>
             </table>
           </div>

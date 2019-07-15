@@ -15,9 +15,21 @@ $data = $res->fetch();
 if($data['nbr'] == 1){
 
   $_SESSION['isloged'] = "true";
+
+  $sql = "SELECT * FROM `utilisateur` WHERE `utilisateur_login` = '$login'";
+  $res = $bdd->query($sql);
+  $data = $res->fetch();
+
+  $_SESSION['prenom'] = $data['utilisateur_prenom'];
+  $_SESSION['nom'] = $data['utilisateur_nom'];
+  $_SESSION['login'] = $data['utilisateur_login'];
+  $_SESSION['email'] = $data['utilisateur_email'];
+  $_SESSION['droit'] = $data['utilisateur_droit'];
+  $_SESSION['id'] = $data['utilisateur_id'];
+
   header('Location: index.php');
 }
-else {
+else { 
 
   header('Location: index.php');
 }
