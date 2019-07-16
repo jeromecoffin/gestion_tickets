@@ -14,11 +14,12 @@
   <body>
 
     <!-- include navigation bar -->
-
     <?php 
       include('connexion_bdd.php');
       include('ajouter_statut.html');
       $id = $_GET['row_id'];
+      $client = $_GET['row_client'];
+      $titre = $_GET['row_titre'];
     ?>
     
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
@@ -38,7 +39,13 @@
           <div class="container-fluid">
             <div class="row">
               <div class="col text-left">
-                <h6 class="m-0 font-weight-bold text-primary">Statut <?php echo $id; ?></h6>
+                <h6 class="m-0 font-weight-bold text-primary">Ticket <?php echo $titre; ?> de
+                <?php 
+                $reponse = $bdd->query("SELECT * FROM client WHERE client_id = '$id';");
+                $donnees = $reponse->fetch();
+                echo $donnees['client_nom'];
+                ?> 
+                </h6>
               </div>
               <div class="col text-right">    
                 <!-- Button trigger modal -->

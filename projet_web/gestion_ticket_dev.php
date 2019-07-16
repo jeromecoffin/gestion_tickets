@@ -35,7 +35,7 @@
                 <tr>
                   <th>ID</th>
                   <th>Titre</th>
-                  <th>Date de Creation</th>
+                  <th>Creation</th>
                   <th>Description</th>
                   <th>Client</th>
                   <th>Statut</th>
@@ -66,6 +66,8 @@
                   <td>
                   <form action ="statut_ticket.php" method="get">
                       <input type="hidden" name="row_id" value="<?php echo $donnees['ticket_id']; ?>">
+                      <input type="hidden" name="row_client" value="<?php echo $donnees['ticket_titre']; ?>">
+                      <input type="hidden" name="row_titre" value="<?php echo $donnees['ticket_client_id']; ?>">
                       <button type="submit" class="btn btn-primary">Statut</button>
                     </form>
                   </td>

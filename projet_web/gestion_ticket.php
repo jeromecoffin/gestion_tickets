@@ -44,7 +44,7 @@
                 <tr>
                   <th>ID</th>
                   <th>Titre</th>
-                  <th>Date de Creation</th>
+                  <th>Creation</th>
                   <th>Description</th>
                   <th>Client</th>
                   <th>Projet</th>

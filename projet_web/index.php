@@ -41,7 +41,7 @@ if($_SESSION['isloged'] != "true"){
             <div class="card-body">
               <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
-                  <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Projets en cours</div>
+                  <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Tickets en cours</div>
                   <div class="h5 mb-0 font-weight-bold text-gray-800">
                     <?php
                       include('connexion_bdd.php');
@@ -66,7 +66,7 @@ if($_SESSION['isloged'] != "true"){
             <div class="card-body">
               <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
-                  <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Projets résolus</div>
+                  <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Tickets résolus</div>
                   <div class="h5 mb-0 font-weight-bold text-gray-800">
                     <?php
                       $response = $bdd->prepare("SELECT * FROM projet WHERE `projet_cloture`= 1 AND projet_del = 0;");
@@ -90,7 +90,7 @@ if($_SESSION['isloged'] != "true"){
             <div class="card-body">
               <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
-                  <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Projets récents</div>
+                  <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Tickets récents</div>
                   <div class="h5 mb-0 font-weight-bold text-gray-800">
                     <?php
                       $response = $bdd->prepare("SELECT * FROM projet WHERE projet_creation BETWEEN date(now() - INTERVAL 3 month) AND now();");
@@ -145,7 +145,7 @@ if($_SESSION['isloged'] != "true"){
       <!-- Content Row -->
       <div class="row">
         <!-- Bar Chart -->
-        <div class = "col-sm">
+        <div class = "col-sm-7">
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Nouveaux Tickets</h6>
@@ -160,7 +160,7 @@ if($_SESSION['isloged'] != "true"){
         </div>
 
         <!-- Donut Chart -->
-        <div class = "col-sm">
+        <div class = "col-sm-5">
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Tickets par client</h6>
