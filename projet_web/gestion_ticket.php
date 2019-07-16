@@ -47,6 +47,7 @@
                   <th>Date de Creation</th>
                   <th>Description</th>
                   <th>Client</th>
+                  <th>Projet</th>
                   <th>Modifier</th>
                   <th>Delete</th>
                 </tr>
@@ -71,6 +72,14 @@
                       $res = $bdd->query("SELECT * FROM client WHERE client_id = $tus;");
                       $data = $res->fetch();
                       echo $data['client_nom'];
+                    ?>
+                  </td>
+                  <td>
+                    <?php
+                      $tus = $donnees['ticket_projet_id'];
+                      $res = $bdd->query("SELECT * FROM projet WHERE projet_id = $tus;");
+                      $data = $res->fetch();
+                      echo $data['projet_nom'];
                     ?>
                   </td>
                   <td>

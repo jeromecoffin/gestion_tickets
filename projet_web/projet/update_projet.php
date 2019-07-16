@@ -9,11 +9,7 @@
 
 
   $bdd->exec("UPDATE projet 
-  SET projet_creation = '$date',
-  projet_cloture = '$cloture',
-  projet_nom = '$nom',
-  projet_description = '$description'
-  WHERE projet_id = '$id_projet';");
+  SET projet_cloture = '$cloture' WHERE projet_id = '$id_projet';");
 
   header("Location: ../gestion_projet.php");
   exit;

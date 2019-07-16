@@ -71,39 +71,13 @@ if($_SESSION['isloged'] != "true"){
                     <?php
                       $response = $bdd->prepare("SELECT * FROM projet WHERE `projet_cloture`= 1 AND projet_del = 0;");
                       $response->execute();
-                      $count = $response->rowcount();
-                      echo $count;
+                      $solved = $response->rowcount();
+                      echo $solved;
                     ?>
                   </div>
                 </div>
                 <div class="col-auto">
                   <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- KPI Card -->
-        <div class="col-xl-3 col-md-6 mb-4">
-          <div class="card border-left-info shadow h-100 py-2">
-            <div class="card-body">
-              <div class="row no-gutters align-items-center">
-                <div class="col mr-2">
-                  <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Performance</div>
-                  <div class="row no-gutters align-items-center">
-                    <div class="col-auto">
-                      <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">40%</div>
-                    </div>
-                    <div class="col">
-                      <div class="progress progress-sm mr-2">
-                        <div class="progress-bar bg-info" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-auto">
-                  <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
                 </div>
               </div>
             </div>
@@ -119,10 +93,10 @@ if($_SESSION['isloged'] != "true"){
                   <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Projets récents</div>
                   <div class="h5 mb-0 font-weight-bold text-gray-800">
                     <?php
-                      $response = $bdd->prepare("SELECT * FROM projet WHERE projet_creation BETWEEN date(now() - INTERVAL 6 month) AND now();");
+                      $response = $bdd->prepare("SELECT * FROM projet WHERE projet_creation BETWEEN date(now() - INTERVAL 3 month) AND now();");
                       $response->execute();
-                      $count = $response->rowcount();
-                      echo $count;
+                      $recent = $response->rowcount();
+                      echo $recent;
                     ?>
                   </div>
                 </div>
@@ -133,6 +107,38 @@ if($_SESSION['isloged'] != "true"){
             </div>
           </div>
         </div>
+
+        <!-- KPI Card -->
+        <div class="col-xl-3 col-md-6 mb-4">
+          <div class="card border-left-info shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Performance</div>
+                  <div class="row no-gutters align-items-center">
+                    <div class="col-auto">
+                      <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                      <?php $perf = ceil($solved/$recent*100);
+                      echo $perf;
+                      echo "%";?>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="progress progress-sm mr-2">
+                        <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $perf?>%" aria-valuenow="<?php echo $perf?>" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-auto">
+                  <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
 
       </div>
 

@@ -57,8 +57,6 @@
                   <th>Date</th>
                   <th>Statut</th>
                   <th>Commentaire</th>
-                  <th>Modifier</th>
-                  <th>Delete</th>
                 </tr>
               </thead>
               <tbody>
@@ -74,18 +72,6 @@
                   <th scope="row"><?php echo $donnees['date_heure']; ?></th>
                   <td><?php echo $donnees['statut']; ?></td>
                   <td><?php echo $donnees['commentaire']; ?></td>
-                  <td>
-                  <form action ="#" method="get">
-                      <input type="hidden" name="row_id" value="<?php echo $donnees['ticket_id']; ?>">
-                      <button type="submit" class="btn btn-success">Modifier</button>
-                    </form>
-                  </td>
-                  <td>
-                    <form action ="#" method="get">
-                      <input type="hidden" name="row_id" value="<?php echo $donnees['ticket_id']; ?>">
-                      <button type="submit" class="btn btn-danger" onclick="return confirm('Voulez-vous vraiment suprimer ce client ?');">Delete</button>
-                    </form>
-                  </td>
                 </tr>
 
                 <?php
